@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blez Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #234D82;
+            --bg-bottom: #15355C;
+            --text-color: #ffffff;
+            --nav-bg: #193A62;
+            --x-axis: 125px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
+            background-attachment: fixed;
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 1440px;
+            min-height: 1024px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        nav {
+            width: 1172px; 
+            height: 39px;  
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            margin: 20px auto 0;
+            display: flex;
+            align-items: center;
+            padding: 0 40px; 
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            border-radius: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+        }
+
+        .nav-right ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            transition: opacity 0.3s;
+        }
+
+        /* Adjusted upward by 100px */
+        .intro-text {
+            position: absolute;
+            left: var(--x-axis); 
+            top: 221px; /* Was 321px */
+            font-family: 'Sora', sans-serif;
+            font-weight: 300;
+            font-size: 35px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .name-text {
+            position: absolute;
+            left: var(--x-axis); 
+            top: 248px; /* Was 348px */
+            font-family: 'Sora', sans-serif;
+            font-weight: 800; 
+            font-size: 75px;
+            line-height: 1;
+            margin-left: 0; 
+        }
+
+        .description-text {
+            position: absolute;
+            left: var(--x-axis);
+            top: 325px; /* Was 425px */
+            max-width: 750px; 
+            font-family: 'Sora', sans-serif;
+            font-weight: 400; 
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .ellipse-container {
+            position: absolute;
+            left: var(--x-axis);
+            top: 441px;  /* Was 541px */
+            display: flex;
+            gap: 25px; 
+        }
+
+        .ellipse {
+            width: 63px;
+            height: 63px;
+            background: #ffffff; 
+            border-radius: 50%; 
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ellipse:hover {
+            transform: scale(1.1);
+            background: #f0f0f0;
+        }
+
+        .nav-right a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#project">Project</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <span class="intro-text">Hello It's Me</span>
+    <h1 class="name-text">Mary Blez</h1>
+    <p class="description-text">
+        A UI/UX designer from Batangas, skilled in creating user-friendly interfaces and experiences. 
+        I excel with tools like Figma for wireframing, prototyping, and research to make apps 
+        and sites intuitive and engaging.
+    </p>
+
+    <div class="ellipse-container">
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+    </div>
+
+</body>
+</html>
