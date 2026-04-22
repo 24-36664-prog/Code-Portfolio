@@ -31,15 +31,16 @@
             position: relative;
         }
 
+        /* --- Navigation --- */
         nav {
-            width: 1172px; 
-            height: 39px;  
+            width: 1272px; 
+            height: 73px; 
             background: var(--nav-bg);
             backdrop-filter: blur(10px);
             margin: 20px auto 0;
             display: flex;
-            align-items: center;
-            padding: 0 40px; 
+            align-items: center; 
+            padding: 0 10px; 
             position: sticky;
             top: 20px;
             z-index: 1000;
@@ -50,29 +51,51 @@
         .nav-container {
             width: 100%;
             display: flex;
-            justify-content: flex-end; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .nav-logo {
+            display: flex;
             align-items: center;
+            transform: translateY(-5px); 
+        }
+
+        .nav-logo img {
+            height: 50px; 
+            display: block;
         }
 
         .nav-right ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 3px; 
         }
 
         .nav-right a {
             text-decoration: none;
             color: white;
             font-weight: 600;
-            font-size: 16px;
-            transition: opacity 0.3s;
+            font-size: 18px; 
+            transition: all 0.3s ease;
+            width: 109px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
         }
 
-        /* Adjusted upward by 100px */
+        .nav-right a:hover {
+            opacity: 0.7;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Hero Content --- */
         .intro-text {
             position: absolute;
             left: var(--x-axis); 
-            top: 221px; /* Was 321px */
+            top: 221px; 
             font-family: 'Sora', sans-serif;
             font-weight: 300;
             font-size: 35px;
@@ -83,18 +106,17 @@
         .name-text {
             position: absolute;
             left: var(--x-axis); 
-            top: 248px; /* Was 348px */
+            top: 248px; 
             font-family: 'Sora', sans-serif;
             font-weight: 800; 
             font-size: 75px;
             line-height: 1;
-            margin-left: 0; 
         }
 
         .description-text {
             position: absolute;
             left: var(--x-axis);
-            top: 325px; /* Was 425px */
+            top: 325px; 
             max-width: 750px; 
             font-family: 'Sora', sans-serif;
             font-weight: 400; 
@@ -103,10 +125,11 @@
             color: var(--text-color);
         }
 
+        /* --- Updated Social Icons Position --- */
         .ellipse-container {
             position: absolute;
             left: var(--x-axis);
-            top: 441px;  /* Was 541px */
+            top: 500px;  /* Inadjust ito mula 441px para bumaba ang mga bilog */
             display: flex;
             gap: 25px; 
         }
@@ -116,18 +139,26 @@
             height: 63px;
             background: #ffffff; 
             border-radius: 50%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .ellipse img {
+            width: 32px; 
+            height: 32px;
+            object-fit: contain;
+            /* Kung gusto mong i-adjust ang image mismo pababa sa loob ng bilog: */
+            /* transform: translateY(2px); */
         }
 
         .ellipse:hover {
             transform: scale(1.1);
             background: #f0f0f0;
-        }
-
-        .nav-right a:hover {
-            opacity: 0.7;
         }
     </style>
 </head>
@@ -135,12 +166,18 @@
 
     <nav>
         <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <img src="./images/logo.png" alt="Logo">
+                </a>
+            </div>
+
             <div class="nav-right">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#project">Project</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#project">Project</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -156,10 +193,18 @@
     </p>
 
     <div class="ellipse-container">
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
+        <div class="ellipse">
+            <img src="./images/instagram-logo.jpg" alt="Instagram">
+        </div>
+        <div class="ellipse">
+            <img src="./images/youtube-logo.svg" alt="YouTube">
+        </div>
+        <div class="ellipse">
+            <img src="./images/facebook-logo.avif" alt="Facebook">
+        </div>
+        <div class="ellipse">
+            <img src="./images/X logo.svg" alt="Twitter">
+        </div>
     </div>
 
 </body>
