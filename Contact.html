@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blez Navigation - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-bg: #193A62;
+            --text-color: #ffffff;
+            --input-border: rgba(255, 255, 255, 0.4);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --accent-pink: #FFB6C1;
+        }
+
+        /* --- Global Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-slide {
+            opacity: 0;
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #234D82;
+            width: 1440px;
+            height: 1024px;
+            margin: 0 auto;
+            padding-top: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            width: 1272px;
+            height: 73px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            transform: translateY(-5px);
+            z-index: 10;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            display: block;
+        }
+
+        .contact-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 309px;
+            height: 52px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        /* --- Sidebar Content --- */
+        .image-sidebar {
+            position: absolute;
+            left: 122px; 
+            top: 244px;  
+            display: flex;
+            flex-direction: column;
+            gap: 23px;   
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 20px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .sidebar-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .sidebar-text {
+            color: white;
+            font-family: 'Sora', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover Colors */
+        .sidebar-item:nth-child(1):hover .sidebar-text { color: #1877F2; } 
+        .sidebar-item:nth-child(2):hover .sidebar-text { color: #E4405F; } 
+        .sidebar-item:nth-child(3):hover .sidebar-text { color: #EA4335; } 
+        .sidebar-item:nth-child(4):hover .sidebar-text { color: #00f2ea; } 
+        .sidebar-item:nth-child(5):hover .sidebar-text { color: #24A1DE; } 
+        .sidebar-item:nth-child(6):hover .sidebar-text { color: #25D366; } 
+
+        .sidebar-item:hover {
+            transform: translateX(10px);
+        }
+
+        .sidebar-item:hover .sidebar-img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px var(--accent-pink));
+        }
+
+        /* Staggered Delay */
+        .sidebar-item:nth-child(1) { animation-delay: 0.1s; }
+        .sidebar-item:nth-child(2) { animation-delay: 0.2s; }
+        .sidebar-item:nth-child(3) { animation-delay: 0.3s; }
+        .sidebar-item:nth-child(4) { animation-delay: 0.4s; }
+        .sidebar-item:nth-child(5) { animation-delay: 0.5s; }
+        .sidebar-item:nth-child(6) { animation-delay: 0.6s; }
+
+        /* --- Contact Form --- */
+        .contact-form-container {
+            position: absolute;
+            left: 658px;
+            top: 162px;
+            width: 660px;
+            height: 726px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-family: 'Sora', sans-serif;
+            animation: slideInRight 0.8s ease forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .contact-form-container input, 
+        .contact-form-container textarea {
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            padding: 15px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Sora', sans-serif;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container input:focus, 
+        .contact-form-container textarea:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.2);
+        }
+
+        .contact-form-container textarea {
+            height: 550px; 
+            resize: none;
+        }
+
+        /* --- Send Button --- */
+        .message-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn img {
+            width: 60px;
+            height: auto;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.2) rotate(-10deg);
+            filter: drop-shadow(0 0 8px var(--accent-pink));
+        }
+
+        /* --- Back Navigation Arrow --- */
+        .nav-arrow {
+            position: absolute;
+            width: 35px;
+            height: 65px;
+            bottom: 50px;
+            left: 50px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px var(--accent-pink));
+        }
+
+        .nav-arrow img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="animate-fade">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="blezportfolio.html">
+                    <img src="./images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <a href="Contact.html" class="contact-center">CONTACT ME</a>
+        </div>
+    </nav>
+
+    <div class="image-sidebar">
+        <a href="https://facebook.com" class="sidebar-item" target="_blank">
+            <img src="./images/facebook logo.webp" alt="Facebook" class="sidebar-img">
+            <span class="sidebar-text">facebook.com</span>
+        </a>
+        <a href="https://instagram.com" class="sidebar-item" target="_blank">
+            <img src="./images/ig logo.webp" alt="Instagram" class="sidebar-img">
+            <span class="sidebar-text">instagram.com</span>
+        </a>
+        <a href="mailto:maryblez@example.com" class="sidebar-item">
+            <img src="./images/gmail logo.png" alt="Gmail" class="sidebar-img">
+            <span class="sidebar-text">gmail.com</span>
+        </a>
+        <a href="https://tiktok.com" class="sidebar-item" target="_blank">
+            <img src="./images/tiktok logo.png" alt="Tiktok" class="sidebar-img">
+            <span class="sidebar-text">tiktok.com</span>
+        </a>
+        <a href="https://t.me/username" class="sidebar-item" target="_blank">
+            <img src="./images/telegram logo.png" alt="Telegram" class="sidebar-img">
+            <span class="sidebar-text">telegram.com</span>
+        </a>
+        <a href="tel:+12345678910" class="sidebar-item">
+            <img src="./images/contact logo.png" alt="Contact" class="sidebar-img">
+            <span class="sidebar-text">+12345678910</span>
+        </a>
+    </div>
+
+    <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form-container">
+        <div class="form-row">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+        </div>
+        <div class="form-row">
+            <input type="text" name="mobile" placeholder="Mobile Number">
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+        
+        <div class="message-wrapper">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="send-btn">
+                <img src="./images/sending email.png" alt="Send">
+            </button>
+        </div>
+    </form>
+
+    <a href="skills.html" class="nav-arrow animate-fade" style="animation-delay: 0.8s;">
+        <img src="./images/back.png" alt="Back to Skills">
+    </a>
+
+</body>
+</html>

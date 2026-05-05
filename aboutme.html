@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blez Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-bg: #193A62;
+            --text-color: #ffffff;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #234D82;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            color: white;
+            overflow: hidden; /* Pinipigilan ang scroll */
+        }
+
+        /* Ginamit ang Flexbox para i-arrange ang sections verticaly */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        /* --- 1. Navigation (Top) --- */
+        nav {
+            width: 90%;
+            max-width: 1272px;
+            height: 73px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0; /* Hindi liliit ang nav */
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo img { height: 45px; }
+
+        .about-me-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 800;
+            font-size: clamp(24px, 3vw, 40px);
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        /* --- 2. Carousel (Middle) --- */
+        .carousel-section {
+            flex: 1; /* Kakainin nito ang natitirang space sa gitna */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            overflow: hidden;
+            animation-delay: 0.2s;
+        }
+
+        .carousel-wheel {
+            position: relative;
+            width: 300px;
+            height: 250px;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 300px;
+            height: 220px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(400px); }
+        .carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(400px); }
+        .carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(400px); }
+        .carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(400px); }
+        .carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(400px); }
+        .carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(400px); }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* --- 3. Description (Bottom) --- */
+        .description-section {
+            width: 100%;
+            padding: 0 5%;
+            margin-bottom: 80px; /* Space para sa arrows sa baba */
+            flex-shrink: 0;
+            animation-delay: 0.4s;
+        }
+
+        .about-description {
+            max-width: 1100px;
+            margin: 0 auto;
+            font-size: clamp(16px, 1.8vw, 22px);
+            line-height: 1.5;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        /* --- 4. Arrows (Fixed at Bottom) --- */
+        .nav-arrow {
+            position: absolute;
+            width: 35px;
+            height: 65px;
+            bottom: 30px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            animation-delay: 0.6s;
+        }
+
+        .arrow-left { left: 5vw; }
+        .arrow-right { right: 5vw; }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px #FFB6C1);
+        }
+
+        .nav-arrow img { width: 100%; height: 100%; object-fit: contain; }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- TOP: Nav -->
+        <nav class="animate-fade">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="blezportfolio.html">
+                        <img src="./images/logo.png" alt="Blez Logo">
+                    </a>
+                </div>
+                <a href="aboutme.html" class="about-me-center">ABOUT ME</a>
+            </div>
+        </nav>
+
+        <!-- MIDDLE: Carousel -->
+        <div class="carousel-section animate-fade">
+            <div class="carousel-wheel">
+                <img src="./images/experience.png" class="carousel-item" alt="Experience">
+                <img src="./images/Ux designer.png" class="carousel-item" alt="UX Designer">
+                <img src="./images/Ui designer.png" class="carousel-item" alt="UI Designer">
+                <img src="./images/skills.png" class="carousel-item" alt="Skills">
+                <img src="./images/hobby.png" class="carousel-item" alt="Hobby">
+                <img src="./images/contact us.png" class="carousel-item" alt="Contact">
+            </div>
+        </div>
+
+        <!-- BOTTOM: Description -->
+        <div class="description-section animate-fade">
+            <p class="about-description">
+                I’m a UI/UX designer who turns complex problems into clean, high-impact digital experiences. I don’t just make things look pretty; I build intuitive interfaces that users love to navigate. From precise wireframing in Figma to polished, responsive layouts, I focus on the perfect balance of soft aesthetics and hard-hitting functionality. Let’s turn your vision into a digital reality that stands out.
+            </p>
+        </div>
+
+        <!-- FIXED: Arrows -->
+        <a href="blezportfolio.html" class="nav-arrow arrow-left animate-fade">
+            <img src="./images/back.png" alt="Back">
+        </a>
+
+        <a href="projects.html" class="nav-arrow arrow-right animate-fade">
+            <img src="./images/next.png" alt="Next">
+        </a>
+    </div>
+
+</body>
+</html>

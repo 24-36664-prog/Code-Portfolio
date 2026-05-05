@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blez Portfolio - Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-bg: #193A62;
+            --text-color: #ffffff;
+            --accent-pink: #FFB6C1; /* Girly pink touch */
+        }
+
+        /* --- Global Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #234D82; 
+            padding-top: 20px;
+            overflow-x: hidden;
+            overflow-y: auto; 
+            height: auto; 
+            margin: 0 auto;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .page-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1440px; 
+            height: 880px; 
+            margin: 0 auto;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            width: 1272px; 
+            height: 73px; 
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center; 
+            padding: 0 40px; 
+            position: relative; 
+            border-radius: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo img {
+            height: 45px; 
+            display: block;
+        }
+
+        .projects-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 800; 
+            font-size: 48px;
+            color: white;
+            pointer-events: none;
+        }
+
+        /* --- Headings --- */
+        .web-designer-heading {
+            position: absolute;
+            left: 171px; 
+            top: 110px; 
+            font-weight: 600; 
+            font-size: 48px;
+            color: white;
+            animation-delay: 0.1s;
+        }
+
+        .design-quote {
+            position: absolute;
+            left: 170px; 
+            top: 166px; 
+            width: 1100px;
+            font-weight: 400; 
+            font-size: 22px;
+            color: white;
+            animation-delay: 0.2s;
+        }
+
+        /* --- Images (Returned to Original Positions) --- */
+        .project-image {
+            position: absolute;
+            object-fit: cover; 
+            border-radius: 10px;
+            transition: transform 0.4s ease, border 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-image:hover {
+            transform: translateY(-10px);
+            border: 2px solid var(--accent-pink);
+        }
+
+        .Website-image-left {
+            left: 171px; 
+            top: 260px; 
+            width: 340px;
+            height: 440px;
+            animation-delay: 0.3s;
+        }
+
+        .Website-image-middle {
+            left: 552px; 
+            top: 215px;  
+            width: 375px; 
+            height: 530px;
+            z-index: 2;
+            animation-delay: 0.4s;
+        }
+
+        .Website-image-right {
+            left: 970px; 
+            top: 260px; 
+            width: 340px;
+            height: 440px;
+            animation-delay: 0.5s;
+        }
+
+        /* --- Navigation Arrows --- */
+        .nav-arrow {
+            position: absolute;
+            width: 35px;
+            height: 65px;
+            top: 770px; 
+            transition: all 0.3s ease;
+            z-index: 1001;
+            animation-delay: 0.6s;
+        }
+
+        .arrow-left { left: 50px; }
+        .arrow-right { right: 50px; }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px var(--accent-pink));
+        }
+
+        .nav-arrow img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <nav class="animate-fade">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="blezportfolio.html">
+                        <img src="./images/logo.png" alt="Logo">
+                    </a>
+                </div>
+                <div class="projects-center">PROJECTS</div>
+            </div>
+        </nav>
+
+        <div class="web-designer-heading animate-fade">Web Designer</div>
+
+        <div class="design-quote animate-fade">
+            Shapes the visual and interactive experience of a website so it looks good and feels easy to use.
+        </div>
+
+        <!-- Project Images -->
+        <img src="./images/website(1).jpg" alt="Ex1 Website" class="project-image Website-image-left animate-fade">
+        <img src="./images/website(2).jpg" alt="Ex2 Website" class="project-image Website-image-middle animate-fade">
+        <img src="./images/website(3).jpg" alt="Ex3 Website" class="project-image Website-image-right animate-fade">
+
+        <!-- Navigation Arrows -->
+        <a href="aboutme.html" class="nav-arrow arrow-left animate-fade">
+            <img src="./images/back.png" alt="Back">
+        </a>
+
+        <a href="Skills.html" class="nav-arrow arrow-right animate-fade">
+            <img src="./images/next.png" alt="Next">
+        </a>
+    </div>
+
+</body>
+</html>

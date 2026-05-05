@@ -12,8 +12,11 @@
             --text-color: #ffffff;
             --nav-bg: #193A62;
             --x-axis: 125px;
+            --btn-glass: rgba(255, 255, 255, 0.1);
+            --btn-hover: #11111d; 
+            --accent-pink: #FFB6C1;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
@@ -24,25 +27,43 @@
             background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
             background-attachment: fixed;
             color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            width: 1440px;
-            min-height: 1024px;
+            font-family: 'Sora', sans-serif;
+            width: 100%;
+            height: 100vh;
             margin: 0 auto;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-item {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         /* --- Navigation --- */
         nav {
-            width: 1272px; 
-            height: 73px; 
+            width: 90%; 
+            max-width: 1272px;
+            height: 70px; 
             background: var(--nav-bg);
             backdrop-filter: blur(10px);
             margin: 20px auto 0;
             display: flex;
             align-items: center; 
-            padding: 0 10px; 
-            position: sticky;
-            top: 20px;
+            padding: 0 20px; 
+            position: relative;
             z-index: 1000;
             border-radius: 30px; 
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -55,31 +76,24 @@
             align-items: center; 
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            transform: translateY(-5px); 
-        }
-
         .nav-logo img {
-            height: 50px; 
+            height: 45px; 
             display: block;
         }
 
         .nav-right ul {
             display: flex;
             list-style: none;
-            gap: 3px; 
+            gap: 10px; 
         }
 
         .nav-right a {
             text-decoration: none;
             color: white;
             font-weight: 600;
-            font-size: 18px; 
+            font-size: 16px; 
             transition: all 0.3s ease;
-            width: 109px;
-            height: 32px;
+            padding: 5px 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -87,56 +101,81 @@
         }
 
         .nav-right a:hover {
-            opacity: 0.7;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--btn-glass);
+            color: var(--accent-pink);
         }
 
         /* --- Hero Content --- */
+        .hero-section {
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+            height: calc(100vh - 100px);
+        }
+
         .intro-text {
             position: absolute;
             left: var(--x-axis); 
-            top: 221px; 
-            font-family: 'Sora', sans-serif;
+            top: 15%; 
             font-weight: 300;
-            font-size: 35px;
+            font-size: 30px;
             line-height: 1;
-            white-space: nowrap;
+            animation-delay: 0.1s;
         }
 
         .name-text {
             position: absolute;
             left: var(--x-axis); 
-            top: 248px; 
-            font-family: 'Sora', sans-serif;
+            top: 20%; 
             font-weight: 800; 
-            font-size: 75px;
-            line-height: 1;
+            font-size: 70px;
+            line-height: 1.1;
+            animation-delay: 0.2s;
         }
 
         .description-text {
             position: absolute;
             left: var(--x-axis);
-            top: 325px; 
-            max-width: 750px; 
-            font-family: 'Sora', sans-serif;
+            top: 35%; 
+            max-width: 600px; 
             font-weight: 400; 
-            font-size: 20px;
-            line-height: 1.5;
-            color: var(--text-color);
+            font-size: 18px;
+            line-height: 1.6;
+            animation-delay: 0.3s;
         }
 
-        /* --- Updated Social Icons Position --- */
+        /* --- Hero Image Adjusted Upward --- */
+        .hero-image {
+            position: absolute;
+            width: 350px; 
+            height: 480px; 
+            right: 10%;
+            top: 10%; /* Changed from 15% to 10% to move it up */
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation-delay: 0.4s;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
+        }
+
+        /* --- Social Icons --- */
         .ellipse-container {
             position: absolute;
             left: var(--x-axis);
-            top: 500px;  /* Inadjust ito mula 441px para bumaba ang mga bilog */
+            top: 55%;
             display: flex;
-            gap: 25px; 
+            gap: 20px; 
+            animation-delay: 0.5s;
         }
 
         .ellipse {
-            width: 63px;
-            height: 63px;
+            width: 55px;
+            height: 55px;
             background: #ffffff; 
             border-radius: 50%; 
             display: flex;
@@ -145,21 +184,75 @@
             transition: all 0.3s ease;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
         }
 
         .ellipse img {
-            width: 32px; 
-            height: 32px;
+            width: 35px; 
+            height: 35px;
             object-fit: contain;
-            /* Kung gusto mong i-adjust ang image mismo pababa sa loob ng bilog: */
-            /* transform: translateY(2px); */
         }
 
         .ellipse:hover {
-            transform: scale(1.1);
-            background: #f0f0f0;
+            transform: translateY(-5px);
+            background: var(--accent-pink);
         }
+
+        /* --- Action Buttons --- */
+        .action-btn-container {
+            position: absolute;
+            left: var(--x-axis);
+            top: 68%;
+            display: flex;
+            gap: 20px;
+            animation-delay: 0.6s;
+        }
+
+        .glass-button {
+            width: 220px;
+            height: 60px;
+            border-radius: 50px;
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-button:hover {
+            background: var(--btn-hover);
+            transform: scale(1.05);
+            border-color: var(--accent-pink);
+        }
+
+        .btn-stars {
+            width: 40px;
+            margin-right: 5px;
+        }
+
+        /* --- Next Arrow Icon --- */
+        .bottom-icon-link {
+            position: absolute;
+            right: 50px;
+            bottom: 40px;
+            animation-delay: 0.8s;
+        }
+
+        .bottom-icon {
+            width: 35px;
+            height: 50px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .bottom-icon:hover {
+            transform: translateX(10px);
+        }
+
     </style>
 </head>
 <body>
@@ -167,45 +260,54 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">
+                <a href="blezportfolio.html">
                     <img src="./images/logo.png" alt="Logo">
                 </a>
             </div>
-
             <div class="nav-right">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#project">Project</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="blezportfolio.html">Home</a></li>
+                    <li><a href="aboutme.html">About</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="projects.html">Project</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <span class="intro-text">Hello It's Me</span>
-    <h1 class="name-text">Mary Blez</h1>
-    <p class="description-text">
-        A UI/UX designer from Batangas, skilled in creating user-friendly interfaces and experiences. 
-        I excel with tools like Figma for wireframing, prototyping, and research to make apps 
-        and sites intuitive and engaging.
-    </p>
+    <main class="hero-section">
+        <span class="intro-text animate-item">Hello It's Me</span>
+        <h1 class="name-text animate-item">Mary Blez</h1>
+        <p class="description-text animate-item">
+            A UI/UX designer from Batangas, skilled in creating user-friendly interfaces and experiences. 
+            I excel with tools like Figma for wireframing, prototyping, and research.
+        </p>
 
-    <div class="ellipse-container">
-        <div class="ellipse">
-            <img src="./images/instagram-logo.jpg" alt="Instagram">
+        <img src="./images/Blez Photo.jpg" alt="Mary Blez Portfolio Image" class="hero-image animate-item">
+
+        <div class="ellipse-container animate-item">
+            <a href="#" class="ellipse"><img src="./images/instagram.png" alt="IG"></a>
+            <a href="#" class="ellipse"><img src="./images/youtube-logo.svg" alt="YT"></a>
+            <a href="#" class="ellipse"><img src="./images/fb.png" alt="FB"></a>
+            <a href="#" class="ellipse"><img src="./images/X logo.svg" alt="X"></a>
         </div>
-        <div class="ellipse">
-            <img src="./images/youtube-logo.svg" alt="YouTube">
+
+        <div class="action-btn-container animate-item">
+            <a href="Contact.html" class="glass-button">
+                <img src="./images/stars.png" alt="stars" class="btn-stars">
+                Get In Touch
+            </a>
+            <a href="projects.html" class="glass-button">
+                <img src="./images/stars.png" alt="stars" class="btn-stars">
+                View Projects
+            </a>
         </div>
-        <div class="ellipse">
-            <img src="./images/facebook-logo.avif" alt="Facebook">
-        </div>
-        <div class="ellipse">
-            <img src="./images/X logo.svg" alt="Twitter">
-        </div>
-    </div>
+
+        <a href="aboutme.html" class="bottom-icon-link animate-item">
+            <img src="./images/next.png" alt="Arrow Icon" class="bottom-icon">
+        </a>
+    </main>
 
 </body>
 </html>
